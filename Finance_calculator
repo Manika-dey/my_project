@@ -1,0 +1,44 @@
+"""
+
+Write a program that allows the user to acess two different financial calculator:
+an investment calculator and a home loan repayment calculator.
+
+"""
+import math
+
+# Create two variables 'investment' and 'bond'
+investment = "to calculate the amount of interest you'll earn on your investment"
+bond = "to calculate the amount you'll have to pay on a home loan"
+
+# ask the user to choose the calculation type and convert it into lowercase
+enter_option = (input("Enter either 'investment' or 'bond' from the menu above to proceed: ").lower())  
+
+# Calculation
+if enter_option == "investment":   #if user select investment
+   p = float(input("Enter depositing amount: ") )  # ask user to enter the amount of money they are depositing
+   r = float(input("Enter interest rate: "))        
+   t=  float(input("Enter the number of years of investment: "))
+   
+   # ask user to enter the type of interest they want
+   interest = (input("enter type of interest you want either 'simple' or 'compound': "))
+     
+   if interest == "simple":  #if user chose the interest type as 'simple' 
+      simple = "interest type 1" # create variable simple
+      total_amount = p * (1 + r/100 * t) # total amount once the interest has been applied
+      print(total_amount)
+
+   elif interest == "compound":   # if user select the interest type as 'compound'
+      compound = "interest type 2" # create variable compound
+      total_amount = p * math.pow((1 + r/100),t) 
+      print(total_amount)
+
+elif  enter_option == "bond":   # if user select 'bond' as calculation type
+      p = float (input("enter the present value of the house: ")) 
+      i = float (input("enter the monthly interest rate: "))
+      n = float (input("enter the number of monthes: ")) 
+      
+      repayment = (((i/100)/12) * p)/(1-(1+((i/100))/12)**(-n))   # the money yser will have to repay each month
+      print(repayment)
+
+else: 
+    print("You have entereted a wrong input")   # if user type neither 'investment' nor 'bond'
